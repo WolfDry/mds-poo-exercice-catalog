@@ -53,7 +53,7 @@ class MovieController extends Controller
 
     public function list()
     {
-        $movies = Movie::get();
+        $movies = Movie::orderBy('primaryTitle')->simplePaginate(20);
 
         return view('movies/index', ['movies' => $movies]);
     }

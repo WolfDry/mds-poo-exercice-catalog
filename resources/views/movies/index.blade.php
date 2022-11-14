@@ -35,12 +35,12 @@
             /* justify-content: space-between; */
             align-items: center;
             width: 30vw;
-            height: 70vh;
             margin: 20px;
         }
-        
-        .content p{
-            overflow: hidden;
+
+        .paginator{
+            display:flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -59,6 +59,9 @@
                 <p>{{$movie->plot}}</p>
             </div>
             @endforeach
+        </div>
+        <div class="paginator">
+            {!! $movies->links() !!}
         </div>
     </div>
 </body>

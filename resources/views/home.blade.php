@@ -10,29 +10,24 @@
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <style>
-        .container {
-            margin: auto;
-            max-width: 900px;
-        }
 
-        .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-    </style>
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css" >
+
 </head>
 <body>
-    <div class="container">
+    <nav>
         <h1>{{ config('app.name') }}</h1>
+    </nav>
+    <div class="container">
 
         <div class="wrapper">
             @foreach ($movies as $movie)
-            <div> 
-                <a href="/movie/{{ $movie->id }}">
-                    <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
-                </a>
+            <div class="content">
+            <h1>{{$movie->originalTitle}}</h1>
+            <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
+            <h2>Résumé :</h2>
+            <p>{{$movie->plot}}</p>
+            <a href="/movie/{{ $movie->id }}">En savoir plus</a>
             </div>
             @endforeach
         </div>

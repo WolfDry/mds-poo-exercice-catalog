@@ -10,53 +10,24 @@
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            /* border: red 1px solid; */
-        }
-        .container {
-            margin: auto;
-            max-width: 80vw;
-        }
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css" >
 
-        .wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .content{
-            display: flex;
-            flex-direction: column;
-            /* justify-content: space-between; */
-            align-items: center;
-            width: 30vw;
-            margin: 20px;
-        }
-
-        .paginator{
-            display:flex;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <h1>{{ config('app.name') }}</h1>
 
+        @sortablelink('startYear', 'Année de parution')
+        @sortablelink('averageRating', 'Note moyenne')
+
         <div class="wrapper">
             @foreach ($movies as $movie)
             <div class="content">
-                <h1>{{$movie->originalTitle}}</h1>
-                <a href="/movie/{{ $movie->id }}">
-                    <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
-                </a>
-                <h2>Résumé :</h2>
-                <p>{{$movie->plot}}</p>
+            <h1>{{$movie->originalTitle}}</h1>
+            <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
+            <h2>Résumé :</h2>
+            <p>{{$movie->plot}}</p>
+            <a href="/movie/{{ $movie->id }}">En savoir plus</a>
             </div>
             @endforeach
         </div>

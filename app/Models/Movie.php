@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Movie extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     /**
      * The table associated with the model.
@@ -22,4 +23,6 @@ class Movie extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public $sortable = ['startDate', 'averageRating'];
 }

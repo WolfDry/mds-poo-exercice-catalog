@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
-use Illuminate\Support\Arr;
 
 class MovieController extends Controller
 {
@@ -37,7 +36,7 @@ class MovieController extends Controller
         if ($request->getRequestUri() == "/movies")
             $movies = Movie::orderBy('primaryTitle')->simplePaginate(20);
         else
-            $movies = Movie::sortable()->paginate(20);
+            $movies = Movie::sortable()->simplePaginate(20);
 
         return view('movies/index', ['movies' => $movies]);
     }

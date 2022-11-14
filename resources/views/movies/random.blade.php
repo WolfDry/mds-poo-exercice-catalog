@@ -10,30 +10,14 @@
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css" >
 
 </head>
 <body>
-    <nav>
-        <h1>{{ config('app.name') }}</h1>
-    </nav>
     <div class="container">
         <div class="content">
-            <h1>Random movie</h1>
-            <h1>{{ $random->originalTitle }}</h1>
-            <img src="{{ $random->poster }}" alt="{{ $random->primaryTitle }}">
-        </div>
-        <div class="wrapper">
-            @foreach ($movies as $movie)
-            <div class="content">
-            <h1>{{$movie->originalTitle}}</h1>
+            <h1>{{ $movie->originalTitle }}</h1>
             <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
-            <h2>Résumé :</h2>
-            <p>{{$movie->plot}}</p>
-            <a href="/movie/{{ $movie->id }}">En savoir plus</a>
-            </div>
-            @endforeach
         </div>
     </div>
 </body>

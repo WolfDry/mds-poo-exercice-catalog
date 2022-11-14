@@ -18,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $movies = Movie::inRandomOrder()->whereNotNull('poster')->limit(12)->get();
 
-    return view('home', ['movies' => $movies]);
+    $random = Movie::inRandomOrder()->first();
+
+    return view('home', ['movies' => $movies, 'random' => $random]);
 });
 
 Route::get('/movie/{id}', [MovieController::class, 'show']);
 
 Route::get('/movies', [MovieController::class, 'list']);
+
+Route::get('/movies/random', [MovieController::class, 'random']);

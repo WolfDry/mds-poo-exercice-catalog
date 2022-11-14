@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use Illuminate\Support\Arr;
 
 class MovieController extends Controller
 {
@@ -27,7 +28,7 @@ class MovieController extends Controller
     {
         $movie = Movie::find($id);
 
-        return view('movie', ['movie' => $movie]);
+        return view('movies/movie', ['movie' => $movie]);
     }
 
     public function list(?Request $request)
@@ -39,5 +40,12 @@ class MovieController extends Controller
             $movies = Movie::sortable()->paginate(20);
 
         return view('movies/index', ['movies' => $movies]);
+    }
+
+    public function random()
+    {
+        $movie = Movie::inRandomOrder()->first();
+
+        return view('movies/random', ['movie' => $movie]);
     }
 }

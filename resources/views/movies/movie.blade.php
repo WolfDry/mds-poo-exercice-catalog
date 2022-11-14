@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container">
-        <div>
+        <div class="content">
             <h1>{{ $movie->originalTitle }}</h1>
             <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
         </div>

@@ -12,14 +12,35 @@
 
     <!-- Styles -->
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* border: red 1px solid; */
+        }
         .container {
             margin: auto;
-            max-width: 900px;
+            max-width: 80vw;
         }
 
         .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            /* justify-content: space-between; */
+            align-items: center;
+            width: 30vw;
+            height: 70vh;
+            margin: 20px;
+        }
+        
+        .content p{
+            overflow: hidden;
         }
     </style>
 </head>
@@ -29,10 +50,13 @@
 
         <div class="wrapper">
             @foreach ($movies as $movie)
-            <div> 
+            <div class="content">
+                <h1>{{$movie->originalTitle}}</h1>
                 <a href="/movie/{{ $movie->id }}">
                     <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
                 </a>
+                <h2>Résumé :</h2>
+                <p>{{$movie->plot}}</p>
             </div>
             @endforeach
         </div>

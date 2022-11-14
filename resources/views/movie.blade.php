@@ -16,25 +16,13 @@
             margin: auto;
             max-width: 900px;
         }
-
-        .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>{{ config('app.name') }}</h1>
-
-        <div class="wrapper">
-            @foreach ($movies as $movie)
-            <div> 
-                <a href="/movie/{{ $movie->id }}">
-                    <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
-                </a>
-            </div>
-            @endforeach
+        <div>
+            <h1>{{ $movie->originalTitle }}</h1>
+            <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
         </div>
     </div>
 </body>

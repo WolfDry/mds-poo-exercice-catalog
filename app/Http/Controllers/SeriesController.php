@@ -29,7 +29,11 @@ class SeriesController extends Controller
     {
         $serie = Series::find($id);
 
-        return view('series/serie', ['serie' => $serie]);
+        $nbEpisode = Episode::select('seasonNumber')->distinct()->where('series_id', $serie->id)->orderBy('seasonNumber')->get();
+
+        $episode = Episode::where('series_id', $serie->id)->orderBy('episodeNumber')->get();
+
+        return view('series/serie', ['serie' => $serie,  'nbEpisode' => $nbEpisode, 'episodes' => $episode]);
     }
 
     public function list()
@@ -64,5 +68,23 @@ class SeriesController extends Controller
         $serie = Series::inRandomOrder()->first();
 
         return view('series/random', ['serie' => $serie]);
+    }
+
+    public function seasonShow($id, $season_num)
+    {
+        $serie = Series::find($id);
+
+        $episodes = Episode::where('series_id', $serie->id)->where('seasonNumber', $season_num)->orderBy('episodeNumber')->get();
+
+        return view('series/season', ['serie' => $serie, 'episodes' => $episodes]);
+    }
+
+    public function episodeShow($id, $season_num, $episode_num)
+    {
+        $serie = Series::find($id);
+
+        $episodes = Episode::where('series_id', $serie->id)->where('seasonNumber', $season_num)->where('episodeNumber', $episode_num)->orderBy('episodeNumber')->first();
+
+        return view('series/episode', ['serie' => $serie, 'episode' => $episodes]);
     }
 }

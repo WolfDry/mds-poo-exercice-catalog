@@ -40,7 +40,7 @@
                     <h4>Date de parution : {{ $serie->startYear }}</h4>
                     <h4>Evaluation : {{ $serie->averageRating }} / 10</h4>
                 </div>
-                <a href="/serie/{{ $serie->id }}">En savoir plus</a>
+                <a href="/series/{{ $serie->id }}">En savoir plus</a>
             </div>
             @endforeach
         </div>

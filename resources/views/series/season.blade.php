@@ -10,7 +10,6 @@
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css" >
 
 </head>
@@ -23,23 +22,19 @@
         <a href="/series">Series</a>
         <a href="/series/random">Random serie</a>
     </nav>
-
-    <h1>{{ config('app.name') }}</h1>
     
     <div class="container">
-        <div class="content">
-            <h1>Random movie</h1>
-            <h1>{{ $random->originalTitle }}</h1>
-            <img src="{{ $random->poster }}" alt="{{ $random->primaryTitle }}">
-        </div>
+        <h1>{{ $serie->originalTitle }}</h1>
         <div class="wrapper">
-            @foreach ($movies as $movie)
+            @foreach ($episodes as $episode)
             <div class="content">
-            <h1>{{$movie->originalTitle}}</h1>
-            <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
-            <h2>Résumé :</h2>
-            <p>{{$movie->plot}}</p>
-            <a href="/movie/{{ $movie->id }}">En savoir plus</a>
+                <h1>{{$episode->originalTitle}}</h1>
+                <img src="{{ $episode->poster }}" alt="{{ $episode->primaryTitle }}">
+                <div class="data">
+                    <h4>Date de parution : {{ $episode->startYear }}</h4>
+                    <h4>Evaluation : {{ $episode->averageRating }} / 10</h4>
+                </div>
+                <a href="/series/{{ $serie->id }}/season/{{$episode->seasonNumber}}/episode/{{$episode->episodeNumber}}">En savoir plus</a>
             </div>
             @endforeach
         </div>

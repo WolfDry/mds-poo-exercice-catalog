@@ -43,6 +43,24 @@
                 </div> --}}
             </div>
         </div>
+        <div class="listSeason">
+            @foreach ($nbEpisode as $nb)
+                <div class="season-content">
+                    <a href="/series/{{$serie->id}}/season/{{$nb->seasonNumber}}">
+                        <h2>
+                            Saison n°{{$nb->seasonNumber}}
+                        </h2>
+                    </a>
+                    @foreach ($episodes as $episode)    
+                        @if ($episode->seasonNumber == $nb->seasonNumber)
+                            <p>
+                                {{$episode->primaryTitle}}
+                            </p>
+                        @endif
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
     </div>
 </body>
 </html>

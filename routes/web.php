@@ -25,12 +25,14 @@ Route::get('/', function () {
     return view('home', ['movies' => $movies, 'random' => $random]);
 });
 
-Route::get('/movie/{id}', [MovieController::class, 'show']);
 Route::get('/movies', [MovieController::class, 'list']);
 Route::get('/movies/random', [MovieController::class, 'random']);
+Route::get('/movies/{id}', [MovieController::class, 'show']);
 
 Route::get('/genres', [GenreController::class, 'list']);
 
 Route::get('/series', [SeriesController::class, 'list']);
-Route::get('/serie/{id}', [SeriesController::class, 'show']);
 Route::get('/series/random', [SeriesController::class, 'random']);
+Route::get('/series/{id}', [SeriesController::class, 'show']);
+Route::get('/series/{id}/season/{season_num}', [SeriesController::class, 'seasonShow']);
+Route::get('/series/{id}/season/{season_num}/episode/{episode_num}', [SeriesController::class, 'episodeShow']);

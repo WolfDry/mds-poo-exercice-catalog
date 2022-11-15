@@ -117,6 +117,17 @@ body{
     color: black;
 }
 
+.listSeason{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.listSeason .season-content{
+    margin: 30px;
+}
+
 .paginator{
     display:flex;
     justify-content: center;

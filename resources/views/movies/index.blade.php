@@ -48,7 +48,7 @@
                     <h4>Date de parution : {{ $movie->startYear }}</h4>
                     <h4>Evaluation : {{ $movie->averageRating }} / 10</h4>
                 </div>
-                <a href="/movie/{{ $movie->id }}">En savoir plus</a>
+                <a href="/movies/{{ $movie->id }}">En savoir plus</a>
             </div>
             @endforeach
         </div>

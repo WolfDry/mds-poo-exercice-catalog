@@ -15,7 +15,7 @@ class Episode extends Model
      *
      * @var string
      */
-    protected $table = 'series';
+    protected $table = 'episodes';
 
     /**
      * Indicates if the model should be timestamped.

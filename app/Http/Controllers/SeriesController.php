@@ -27,9 +27,9 @@ class SeriesController extends Controller
      */
     public function show($id)
     {
-        // $movie = Series::find($id);
+        $serie = Series::find($id);
 
-        // return view('movies/movie', ['movie' => $movie]);
+        return view('series/serie', ['serie' => $serie]);
     }
 
     public function list()
@@ -44,11 +44,6 @@ class SeriesController extends Controller
             $list = Series::orderBy(request('orderBy'), request('order'))->simplePaginate(20);
         else
             $list = Series::simplePaginate(20);
-
-        // if ($request->getRequestUri() == "/movies")
-        //     $movies = Movie::orderBy('primaryTitle')->paginate(20);
-        // else
-        //     $movies = Movie::sortable()->paginate(20);
 
         // $genres = Genres::orderBy('label')->get();
 

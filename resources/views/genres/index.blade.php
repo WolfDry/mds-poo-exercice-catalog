@@ -14,14 +14,21 @@
 
 </head>
 <body>
+
+    <nav>
+        <a href=""></a>
+    </nav>
+
     <div class="container">
         <h1>{{ config('app.name') }}</h1>
 
         <div class="wrapper">
             @foreach ($genres as $genre)
-            <div class="content">
-            <h1>{{$genre->label}}</h1>
-            </div>
+            <a class="links genre" href="movies?genre={{$genre->label}}">
+                <div class="content genre">
+                    <h1>{{$genre->label}}</h1>
+                </div>
+            </a>
             @endforeach
         </div>
     </div>

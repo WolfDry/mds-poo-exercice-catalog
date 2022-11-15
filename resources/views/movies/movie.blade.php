@@ -15,9 +15,24 @@
 </head>
 <body>
     <div class="container">
-        <div class="content">
-            <h1>{{ $movie->originalTitle }}</h1>
-            <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
+        <h1>{{ $movie->originalTitle }}</h1>
+        <div class="single_wrapper">
+            <div class="content">
+                <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
+                <div class="data">
+                    <h4>Date de parution : {{ $movie->startYear }}</h4>
+                    <h4>Evaluation : {{ $movie->averageRating }} / 10</h4>
+                </div>
+                <h2>Résumé :</h2>
+                <p>{{$movie->plot}}</p>
+                <div class="genres">
+                    @foreach ($movie->genre as $genre)
+                        <div class="genre">
+                            {{$genre->label}} 
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </body>

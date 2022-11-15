@@ -25,4 +25,12 @@ class Movie extends Model
     public $timestamps = false;
 
     public $sortable = ['startDate', 'averageRating'];
+
+    /**
+     * The genres that belong to the movie.
+     */
+    public function genre()
+    {
+        return $this->belongsToMany(Genres::class, 'movies_genres', 'movie_id', 'genre_id');
+    }
 }

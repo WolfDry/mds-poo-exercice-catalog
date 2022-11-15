@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genres;
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use Illuminate\Database\Eloquent\Builder;
 
 class MovieController extends Controller
 {
@@ -34,11 +36,22 @@ class MovieController extends Controller
     {
 
         if ($request->getRequestUri() == "/movies")
-            $movies = Movie::orderBy('primaryTitle')->simplePaginate(20);
+            $movies = Movie::orderBy('primaryTitle')->paginate(20);
         else
-            $movies = Movie::sortable()->simplePaginate(20);
+            $movies = Movie::sortable()->paginate(20);
 
-        return view('movies/index', ['movies' => $movies]);
+        $genres = Genres::orderBy('label')->get();
+
+        if (request('genre')) {
+
+            $genre = Genres::where('label', request('genre'))->first();
+            $genre_id = $genre->id;
+            $movies = Movie::whereHas('genre', function (Builder $movieQuery) use ($genre_id) {
+                $movieQuery->where('genre_id', $genre_id);
+            })->orderBy('originalTitle')->simplePaginate(20);
+        }
+
+        return view('movies/index', ['movies' => $movies, 'genres' => $genres]);
     }
 
     public function random()

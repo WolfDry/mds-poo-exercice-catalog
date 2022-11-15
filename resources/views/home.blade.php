@@ -16,8 +16,14 @@
 </head>
 <body>
     <nav>
-        <h1>{{ config('app.name') }}</h1>
+        <a href="/">Accueil</a>
+        <a href="genres">Genres</a>
+        <a href="movies">Movies</a>
+        <a href="movies/random">Random movie</a>
     </nav>
+
+    <h1>{{ config('app.name') }}</h1>
+    
     <div class="container">
         <div class="content">
             <h1>Random movie</h1>

@@ -14,6 +14,13 @@
 
 </head>
 <body>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="genres">Genres</a>
+        <a href="movies">Movies</a>
+        <a href="movies/random">Random movie</a>
+    </nav>
+    
     <div class="container">
         <div class="content">
             <h1>{{ $movie->originalTitle }}</h1>

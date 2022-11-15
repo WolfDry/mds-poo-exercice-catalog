@@ -28,32 +28,24 @@
     <div class="container">
         <h1>{{ config('app.name') }}</h1>
 
-        @sortablelink('startYear', 'Année de parution')<br>
-        @sortablelink('averageRating', 'Note moyenne')
-
-        <form action="" method="get">
-            <select name="genre" onchange="this.form.submit()">
-                @foreach ($genres as $genre)
-                    <option value="{{$genre->label}}">{{$genre->label}}</option>                    
-                @endforeach
-            </select>
-        </form>
+        <a href="series?orderBy=startYear&order=asc">Date de parution</a>
+        <a href="series?orderBy=averageRating&order=asc">Note</a>
 
         <div class="wrapper">
-            @foreach ($movies as $movie)
+            @foreach ($series as $serie)
             <div class="content">
-                <h1>{{$movie->originalTitle}}</h1>
-                <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
+                <h1>{{$serie->originalTitle}}</h1>
+                <img src="{{ $serie->poster }}" alt="{{ $serie->primaryTitle }}">
                 <div class="data">
-                    <h4>Date de parution : {{ $movie->startYear }}</h4>
-                    <h4>Evaluation : {{ $movie->averageRating }} / 10</h4>
+                    <h4>Date de parution : {{ $serie->startYear }}</h4>
+                    <h4>Evaluation : {{ $serie->averageRating }} / 10</h4>
                 </div>
-                <a href="/movie/{{ $movie->id }}">En savoir plus</a>
+                <a href="/serie/{{ $serie->id }}">En savoir plus</a>
             </div>
             @endforeach
         </div>
         <div class="paginator">
-            {!! $movies->links() !!}
+            {{ $series->links() }}
         </div>
     </div>
 </body>

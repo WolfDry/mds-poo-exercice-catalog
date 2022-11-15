@@ -16,9 +16,11 @@
 <body>
     <nav>
         <a href="/">Accueil</a>
-        <a href="genres">Genres</a>
-        <a href="movies">Movies</a>
-        <a href="movies/random">Random movie</a>
+        <a href="/genres">Genres</a>
+        <a href="/movies">Movies</a>
+        <a href="/movies/random">Random movie</a>
+        <a href="/series">Series</a>
+        <a href="/series/random">Random serie</a>
     </nav>
     
     <div class="container">

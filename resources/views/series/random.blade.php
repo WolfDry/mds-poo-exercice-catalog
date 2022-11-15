@@ -14,7 +14,6 @@
 
 </head>
 <body>
-
     <nav>
         <a href="/">Accueil</a>
         <a href="/genres">Genres</a>
@@ -23,18 +22,26 @@
         <a href="/series">Series</a>
         <a href="/series/random">Random serie</a>
     </nav>
-
+    
     <div class="container">
-        <h1>{{ config('app.name') }}</h1>
-
-        <div class="wrapper">
-            @foreach ($genres as $genre)
-            <a class="links genre" href="movies?genre={{$genre->label}}">
-                <div class="content genre">
-                    <h1>{{$genre->label}}</h1>
+        <h1>{{ $serie->originalTitle }}</h1>
+        <div class="single_wrapper">
+            <div class="content">
+                <img src="{{ $serie->poster }}" alt="{{ $serie->primaryTitle }}">
+                <div class="data">
+                    <h4>Date de parution : {{ $serie->startYear }}</h4>
+                    <h4>Evaluation : {{ $serie->averageRating }} / 10</h4>
                 </div>
-            </a>
-            @endforeach
+                <h2>Résumé :</h2>
+                <p>{{$serie->plot}}</p>
+                {{-- <div class="genres">
+                    @foreach ($serie->genre as $genre)
+                        <div class="genre">
+                            {{$genre->label}} 
+                        </div>
+                    @endforeach
+                </div> --}}
+            </div>
         </div>
     </div>
 </body>

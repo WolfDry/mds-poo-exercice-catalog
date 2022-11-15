@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genres;
 use Illuminate\Http\Request;
 use App\Models\Series;
 use App\Models\Episode;
@@ -33,8 +32,18 @@ class SeriesController extends Controller
         // return view('movies/movie', ['movie' => $movie]);
     }
 
-    public function list(?Request $request)
+    public function list()
     {
+
+        if (request('page')) {
+            if (request('orderBy') || request('order'))
+                $list = Series::orderBy(request('orderBy'), request('order'))->simplePaginate(20);
+            else
+                $list = Series::simplePaginate(20);
+        } elseif (request('orderBy') || request('order'))
+            $list = Series::orderBy(request('orderBy'), request('order'))->simplePaginate(20);
+        else
+            $list = Series::simplePaginate(20);
 
         // if ($request->getRequestUri() == "/movies")
         //     $movies = Movie::orderBy('primaryTitle')->paginate(20);
@@ -52,6 +61,13 @@ class SeriesController extends Controller
         //     })->orderBy('originalTitle')->simplePaginate(20);
         // }
 
-        // return view('movies/index', ['movies' => $movies, 'genres' => $genres]);
+        return view('series/index', ['series' => $list]);
+    }
+
+    public function random()
+    {
+        $serie = Series::inRandomOrder()->first();
+
+        return view('series/random', ['serie' => $serie]);
     }
 }

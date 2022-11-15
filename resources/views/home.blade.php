@@ -22,6 +22,9 @@
         <a href="/movies/random">Random movie</a>
         <a href="/series">Series</a>
         <a href="/series/random">Random serie</a>
+        <form action="/search" method="get">
+            <input type="text" name="q">
+        </form>
     </nav>
 
     <h1>{{ config('app.name') }}</h1>

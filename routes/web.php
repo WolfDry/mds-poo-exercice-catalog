@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SeriesController;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,5 @@ Route::get('/series/random', [SeriesController::class, 'random']);
 Route::get('/series/{id}', [SeriesController::class, 'show']);
 Route::get('/series/{id}/season/{season_num}', [SeriesController::class, 'seasonShow']);
 Route::get('/series/{id}/season/{season_num}/episode/{episode_num}', [SeriesController::class, 'episodeShow']);
+
+Route::get('/search', [SearchController::class, 'search']);
